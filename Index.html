@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Website Toko FB</title>
+    <!-- Tailwind CSS untuk styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Mencegah scroll horizontal */
+        body { overflow-x: hidden; }
+        /* Animasi sederhana saat scroll */
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans antialiased text-gray-800">
+
+    <!-- Container Utama (Dibuat menyerupai tampilan layar HP) -->
+    <main class="max-w-md mx-auto bg-white min-h-screen shadow-xl relative pb-20 fade-in">
+        
+        <!-- Header / Profil Toko -->
+        <header class="bg-blue-600 text-white p-6 rounded-b-3xl shadow-md text-center">
+            <div class="w-24 h-24 mx-auto bg-white rounded-full border-4 border-blue-200 overflow-hidden mb-3">
+                <!-- Placeholder Avatar Toko -->
+                <img src="https://ui-avatars.com/api/?name=Toko+Ku&background=random&size=150" alt="Logo Toko" class="w-full h-full object-cover">
+            </div>
+            <h1 class="text-2xl font-bold">Toko Serba Ada</h1>
+            <p class="text-blue-100 text-sm mt-1">Spesialis Barang Preloved & Elektronik Mantap. Bisa COD!</p>
+            <p class="text-xs mt-2 bg-blue-700 inline-block px-3 py-1 rounded-full"><i class="fas fa-map-marker-alt mr-1"></i> Area Sekitarmu</p>
+        </header>
+
+        <!-- Tombol Kontak Cepat -->
+        <section class="px-6 py-6 space-y-3">
+            <a href="#" class="block w-full bg-green-500 hover:bg-green-600 text-white text-center font-semibold py-3 rounded-xl shadow-sm transition duration-200" onclick="showToast('Membuka WhatsApp...')">
+                <i class="fab fa-whatsapp text-lg mr-2"></i> Chat WhatsApp
+            </a>
+            <a href="#" class="block w-full bg-blue-500 hover:bg-blue-600 text-white text-center font-semibold py-3 rounded-xl shadow-sm transition duration-200" onclick="showToast('Membuka Facebook...')">
+                <i class="fab fa-facebook text-lg mr-2"></i> Kunjungi Facebook Kami
+            </a>
+        </section>
+
+        <!-- Etalase Barang Terlaris -->
+        <section class="px-6 pb-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-bold text-gray-800">Barang Pilihan</h2>
+                <span class="text-xs text-blue-600 font-semibold cursor-pointer">Lihat Semua</span>
+            </div>
+
+            <!-- Grid Produk -->
+            <div class="grid grid-cols-2 gap-4">
+                
+                <!-- Produk 1 -->
+                <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="h-32 bg-gray-200 flex items-center justify-center relative">
+                        <i class="fas fa-tshirt text-4xl text-gray-400"></i>
+                        <span class="absolute top-2 left-2 bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded">HOT</span>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="text-sm font-semibold text-gray-800 truncate">Jaket Thrift Vintage</h3>
+                        <p class="text-blue-600 font-bold mt-1">Rp 85.000</p>
+                        <button onclick="showDetail('Jaket Thrift Vintage', 'Rp 85.000', 'Kondisi 90% mulus, siap pakai sudah dicuci.')" class="mt-2 w-full text-xs border border-blue-500 text-blue-600 py-1 rounded-md hover:bg-blue-50 transition">Detail</button>
+                    </div>
+                </div>
+
+                <!-- Produk 2 -->
+                <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="h-32 bg-gray-200 flex items-center justify-center relative">
+                        <i class="fas fa-mobile-alt text-4xl text-gray-400"></i>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="text-sm font-semibold text-gray-800 truncate">HP Samsung Bekas</h3>
+                        <p class="text-blue-600 font-bold mt-1">Rp 1.200.000</p>
+                        <button onclick="showDetail('HP Samsung Bekas', 'Rp 1.200.000', 'Layar ori, baterai awet. Minus lecet pemakaian.')" class="mt-2 w-full text-xs border border-blue-500 text-blue-600 py-1 rounded-md hover:bg-blue-50 transition">Detail</button>
+                    </div>
+                </div>
+
+                <!-- Produk 3 -->
+                <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="h-32 bg-gray-200 flex items-center justify-center relative">
+                        <i class="fas fa-chair text-4xl text-gray-400"></i>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="text-sm font-semibold text-gray-800 truncate">Meja Lipat Kayu</h3>
+                        <p class="text-blue-600 font-bold mt-1">Rp 45.000</p>
+                        <button onclick="showDetail('Meja Lipat Kayu', 'Rp 45.000', 'Cocok buat anak kos. Ringan dan kuat.')" class="mt-2 w-full text-xs border border-blue-500 text-blue-600 py-1 rounded-md hover:bg-blue-50 transition">Detail</button>
+                    </div>
+                </div>
+
+                <!-- Produk 4 -->
+                <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition">
+                    <div class="h-32 bg-gray-200 flex items-center justify-center relative">
+                        <i class="fas fa-hamburger text-4xl text-gray-400"></i>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="text-sm font-semibold text-gray-800 truncate">Risol Mayo Mentah</h3>
+                        <p class="text-blue-600 font-bold mt-1">Rp 20.000</p>
+                        <button onclick="showDetail('Risol Mayo Mentah', 'Rp 20.000', 'Isi 10 pcs, tinggal goreng. Dijamin lumer!')" class="mt-2 w-full text-xs border border-blue-500 text-blue-600 py-1 rounded-md hover:bg-blue-50 transition">Detail</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Informasi Tambahan -->
+        <section class="px-6 mb-8 text-center text-sm text-gray-500">
+            <div class="bg-gray-50 p-4 rounded-xl border border-gray-100">
+                <i class="fas fa-shield-alt text-2xl text-green-500 mb-2"></i>
+                <p class="font-semibold text-gray-700">Belanja Aman</p>
+                <p class="text-xs mt-1">Kami mengutamakan COD agar pembeli bisa cek barang langsung.</p>
+            </div>
+        </section>
+
+        <!-- Tombol Share Mengambang (Floating Action Button) -->
+        <button onclick="copyLink()" class="fixed bottom-6 right-6 lg:absolute lg:bottom-6 lg:right-6 bg-blue-600 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center hover:bg-blue-700 transition z-10">
+            <i class="fas fa-share-alt"></i>
+        </button>
+
+        <!-- Toast Notification -->
+        <div id="toast" class="fixed bottom-20 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-4 py-2 rounded shadow-lg transition-opacity duration-300 opacity-0 pointer-events-none z-50">
+            Pesan Notifikasi
+        </div>
+
+        <!-- Modal Detail Produk -->
+        <div id="productModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300 px-4">
+            <div class="bg-white rounded-xl w-full max-w-sm overflow-hidden transform scale-95 transition-transform duration-300" id="modalContent">
+                <div class="h-40 bg-gray-200 flex items-center justify-center">
+                    <i class="fas fa-box-open text-5xl text-gray-400"></i>
+                </div>
+                <div class="p-5">
+                    <h2 id="modalTitle" class="text-xl font-bold text-gray-800">Nama Produk</h2>
+                    <p id="modalPrice" class="text-lg font-bold text-blue-600 mt-1">Harga</p>
+                    <p id="modalDesc" class="text-sm text-gray-600 mt-3 border-t pt-3">Deskripsi barang akan muncul di sini.</p>
+                    
+                    <div class="mt-5 flex gap-2">
+                        <button onclick="closeModal()" class="flex-1 border border-gray-300 text-gray-700 py-2 rounded-lg font-semibold hover:bg-gray-50 transition">Tutup</button>
+                        <button onclick="showToast('Menuju chat penjual...'); closeModal();" class="flex-1 bg-green-500 text-white py-2 rounded-lg font-semibold hover:bg-green-600 transition">Beli Sekarang</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // Fungsi untuk menampilkan notifikasi toast (daripada pakai alert)
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.remove('opacity-0');
+            toast.classList.add('opacity-100');
+            
+            setTimeout(() => {
+                toast.classList.remove('opacity-100');
+                toast.classList.add('opacity-0');
+            }, 3000);
+        }
+
+        // Fungsi menyalin link (pura-pura)
+        function copyLink() {
+            // Karena ini contoh, kita pakai notifikasi saja
+            showToast('Link toko berhasil disalin! Silakan paste di FB.');
+        }
+
+        // Fungsi Modal
+        const modal = document.getElementById('productModal');
+        const modalContent = document.getElementById('modalContent');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalPrice = document.getElementById('modalPrice');
+        const modalDesc = document.getElementById('modalDesc');
+
+        function showDetail(title, price, desc) {
+            modalTitle.textContent = title;
+            modalPrice.textContent = price;
+            modalDesc.textContent = desc;
+            
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+        }
+
+        // Menutup modal jika klik area luar (background hitam)
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
